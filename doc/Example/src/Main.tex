@@ -1,0 +1,57 @@
+% Copyright (C) 2022 Anton Rodomanov
+%
+% This file is part of the `CustomArticle` class.
+%
+% You may distribute and/or modify this code under the conditions
+% of the LaTeX Project Public License, version 1.3c or any later version.
+
+\documentclass{CustomArticle}
+
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\PaperGeneralInfo{
+  title={Paper Title},
+  date={January 11, 2020},
+  %version={1.0} % optional
+}
+\AddPaperAuthor{
+  name={Author 1},
+  affiliation={Affiliation of author 1},
+  email={author1@domain}
+}
+\AddPaperAuthor{
+  name={Author 2},
+  affiliation={Affiliation of author 2},
+  email={author2@domain}
+}
+\PaperAbstract{In this paper, we propose ...}
+\PaperKeywords{keyword 1, keyword 2, ...}
+\PaperThanks{This paper has been supported by grant ...}
+
+\begin{document}
+
+  \PrintTitleAndAbstract
+
+
+  \section{Introduction}
+
+  \lipsum[1]
+
+
+  \section{Main Result}
+
+  We are ready to present the main result of this paper.
+
+  \begin{theorem}\label{th:AdditionIsCommutative}
+    For any reals $a, b$, we have $a + b = b + a$.
+  \end{theorem}
+
+  \begin{remark}\label{th:Terminology}
+    According to \cref{th:AdditionIsCommutative}, addition is \emph{commutative}.
+  \end{remark}
+
+  \Cref{th:Terminology} introduces important terminology.
+
+\end{document}
