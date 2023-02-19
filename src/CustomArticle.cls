@@ -169,7 +169,7 @@
     \ifdefvoid{\AuthorString}{\vspace{-2em}}{}%
     \PaperInfo@Date%
     \ifdef{\PaperInfo@Version}{%
-      \par\vspace{1ex}%
+      \\[1ex]%
       [version \PaperInfo@Version]%
     }{}%
   }
