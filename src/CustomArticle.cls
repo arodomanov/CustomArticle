@@ -5,7 +5,7 @@
 % You may distribute and/or modify this code under the conditions
 % of the LaTeX Project Public License, version 1.3c or any later version.
 
-\ProvidesClass{CustomArticle}[2022/06/28 v0.1 Custom class for articles]
+\ProvidesClass{CustomArticle}[2023/12/07 v0.1.1+ Custom class for articles]
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{etoolbox}
