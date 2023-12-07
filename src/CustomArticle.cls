@@ -200,6 +200,26 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set up numbering.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\nottoggle{CustomArticle@SimpleNumbering}{
+% Number everything by section.
+  \AtEndPreamble{
+    \numberwithin{equation}{section}
+    \numberwithin{table}{section}
+    \numberwithin{figure}{section}
+
+    \ifltxcounter{algorithm}{
+      % This class does not load any algorithm package on its own, so set up the
+      % numbering for algorithms only if some algorithm package has been loaded
+      % afterwards.
+      \numberwithin{algorithm}{section}
+    }{}
+  }
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define theorem-like environments.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -209,7 +229,11 @@
 % See: https://tex.stackexchange.com/a/19106.
 \AtEndPreamble{
 % Use the same counter for all theorem-like environments.
-  \newtheorem{theorem}{Theorem}
+  \nottoggle{CustomArticle@SimpleNumbering}{
+    \declaretheorem[numberwithin=section]{theorem}
+  }{
+    \declaretheorem{theorem}
+  }
   \newtheorem{lemma}[theorem]{Lemma}
   \newtheorem{proposition}[theorem]{Proposition}
   \newtheorem{corollary}[theorem]{Corollary}
@@ -229,27 +253,6 @@
     \fi
   }{}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Set up numbering.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\nottoggle{CustomArticle@SimpleNumbering}{
-% Number everything by section.
-  \AtEndPreamble{
-    \numberwithin{equation}{section}
-    \numberwithin{theorem}{section}
-    \numberwithin{table}{section}
-    \numberwithin{figure}{section}
-
-    \ifltxcounter{algorithm}{
-      % This class does not load any algorithm package on its own, so set up the
-      % numbering for algorithms only if some algorithm package has been loaded
-      % afterwards.
-      \numberwithin{algorithm}{section}
-    }{}
-  }
-}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The end.
