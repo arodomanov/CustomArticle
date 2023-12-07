@@ -36,6 +36,8 @@
 \RequirePackage{mathtools}
 \RequirePackage{amsthm}
 \RequirePackage{geometry}
+\RequirePackage{thmtools}
+\RequirePackage{thm-restate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up page layout.
