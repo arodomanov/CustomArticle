@@ -228,7 +228,12 @@
 % somewhere in the middle of preamble.
 % See: https://tex.stackexchange.com/a/19106.
 \AtEndPreamble{
-% Use the same counter for all theorem-like environments.
+  % The line below is a workaround for the `Command \c@lemma already defined` error.
+  % For more details, see https://github.com/muzimuzhi/thmtools/issues/75.
+  % TODO: Remove the line below once the above issue has been resolved.
+  \renewcommand\thmt@autorefsetup{\@xa\def\csname\thmt@envname autorefname\@xa\endcsname\@xa{\thmt@thmname}}
+
+  % Use the same counter for all theorem-like environments.
   \nottoggle{CustomArticle@SimpleNumbering}{
     \declaretheorem[numberwithin=section]{theorem}
   }{
