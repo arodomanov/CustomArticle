@@ -228,18 +228,21 @@
 % somewhere in the middle of preamble.
 % See: https://tex.stackexchange.com/a/19106.
 \AtEndPreamble{
-  % Below is a workaround for the `Command \c@lemma already defined` error.
-  % For more details, see https://github.com/muzimuzhi/thmtools/issues/75.
+  % Workaround for the `Command \c@lemma already defined` error, which occurs
+  % when using LaTeX version 2026/06/01 or later. For more details, see
+  % https://github.com/muzimuzhi/thmtools/issues/75.
   % TODO: Remove the code below once the above issue has been resolved.
-  \renewcommand\thmt@autorefsetup{%
-    \@xa\def\csname\thmt@envname autorefname\@xa\endcsname\@xa{\thmt@thmname}%
-    \ifthmt@hassibling
-      \@xa\def\@xa\thmt@autoreffix\@xa{%
-        \@xa\global\@xa\let\csname the\thmt@envname\@xa\endcsname
-          \csname the\thmt@sibling\endcsname
-        \def\thmt@autoreffix{}%
-      }%
-    \fi
+  \IfFormatAtLeastT{2026/06/01}{
+    \renewcommand\thmt@autorefsetup{%
+      \@xa\def\csname\thmt@envname autorefname\@xa\endcsname\@xa{\thmt@thmname}%
+      \ifthmt@hassibling
+        \@xa\def\@xa\thmt@autoreffix\@xa{%
+          \@xa\global\@xa\let\csname the\thmt@envname\@xa\endcsname
+            \csname the\thmt@sibling\endcsname
+          \def\thmt@autoreffix{}%
+        }%
+      \fi
+    }
   }
 
   % Use the same counter for all theorem-like environments.
