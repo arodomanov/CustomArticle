@@ -228,7 +228,7 @@
 % somewhere in the middle of preamble.
 % See: https://tex.stackexchange.com/a/19106.
 \AtEndPreamble{
-  % The line below is a workaround for the `Command \c@lemma already defined` error.
+  % Below is a workaround for the `Command \c@lemma already defined` error.
   % For more details, see https://github.com/muzimuzhi/thmtools/issues/75.
   % TODO: Remove the code below once the above issue has been resolved.
   \renewcommand\thmt@autorefsetup{%
